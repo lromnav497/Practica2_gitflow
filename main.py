@@ -1,4 +1,5 @@
 # main.py
+<<<<<<< HEAD
 from operaciones import sumar, restar, multiplicar, dividir
 
 def main():
@@ -14,6 +15,14 @@ def main():
 
     except ValueError as e:
         print(f"Error: {e}")
+=======
+from menu import mostrar_menu
+
+def main():
+    opcion, numero = mostrar_menu()
+    if opcion:
+        print(f"Has seleccionado la opción {opcion} y el número {numero}")
+>>>>>>> feature/menu-functionality
 
 if __name__ == "__main__":
     main()
