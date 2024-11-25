@@ -1,4 +1,6 @@
 # menu.py
+from operaciones import sumar, restar, multiplicar, dividir
+
 def mostrar_menu():
     print("Seleccione una opción:")
     print("1- Sumar")
@@ -13,41 +15,47 @@ def mostrar_menu():
     # Validar que la opción esté en el rango esperado
     if opcion not in ['1', '2', '3', '4', '5']:
         print("Opción inválida. Por favor, ingrese un número entre 1 y 5.")
-        return None
+        return None, None
     
     # Pedir al usuario un número
-    numero = float(input("Ingrese un número: "))
+    numero1 = float(input("Ingrese el primer número: "))
+    numero2 = float(input("Ingrese el segundo número: "))
     
-    return opcion, numero
+    return opcion, numero1, numero2
 
-def ejecutar_opcion(opcion, numero):
+def ejecutar_opcion(opcion, numero1, numero2):
     if opcion == '1':
-        print(f"Resultado de sumar: {numero + numero}")
+        try:
+            resultado = sumar(numero1, numero2)
+            print(f"Resultado de sumar: {resultado}")
+        except ValueError as e:
+            print(e)
     elif opcion == '2':
-        print(f"Resultado de restar: {numero - numero}")
+        try:
+            resultado = restar(numero1, numero2)
+            print(f"Resultado de restar: {resultado}")
+        except ValueError as e:
+            print(e)
     elif opcion == '3':
-        resultado = 0
-        for _ in range(int(numero)):
-            resultado += numero
-        print(f"Resultado de multiplicar: {resultado}")
+        try:
+            resultado = multiplicar(numero1, numero2)
+            print(f"Resultado de multiplicar: {resultado}")
+        except ValueError as e:
+            print(e)
     elif opcion == '4':
-        if numero == 0:
-            print("Error: No se puede dividir por cero.")
-        else:
-            resultado = 0
-            temp = numero
-            while temp >= numero:
-                temp -= numero
-                resultado += 1
+        try:
+            resultado = dividir(numero1, numero2)
             print(f"Resultado de dividir: {resultado}")
+        except ValueError as e:
+            print(e)
     elif opcion == '5':
         print("Saliendo...")
 
 if __name__ == "__main__":
     while True:
-        opcion, numero = mostrar_menu()
+        opcion, numero1, numero2 = mostrar_menu()
         if opcion is None:
             continue
-        ejecutar_opcion(opcion, numero)
+        ejecutar_opcion(opcion, numero1, numero2)
         if opcion == '5':
             break
