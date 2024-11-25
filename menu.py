@@ -19,3 +19,35 @@ def mostrar_menu():
     numero = float(input("Ingrese un número: "))
     
     return opcion, numero
+
+def ejecutar_opcion(opcion, numero):
+    if opcion == '1':
+        print(f"Resultado de sumar: {numero + numero}")
+    elif opcion == '2':
+        print(f"Resultado de restar: {numero - numero}")
+    elif opcion == '3':
+        resultado = 0
+        for _ in range(int(numero)):
+            resultado += numero
+        print(f"Resultado de multiplicar: {resultado}")
+    elif opcion == '4':
+        if numero == 0:
+            print("Error: No se puede dividir por cero.")
+        else:
+            resultado = 0
+            temp = numero
+            while temp >= numero:
+                temp -= numero
+                resultado += 1
+            print(f"Resultado de dividir: {resultado}")
+    elif opcion == '5':
+        print("Saliendo...")
+
+if __name__ == "__main__":
+    while True:
+        opcion, numero = mostrar_menu()
+        if opcion is None:
+            continue
+        ejecutar_opcion(opcion, numero)
+        if opcion == '5':
+            break
