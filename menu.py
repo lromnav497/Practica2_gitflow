@@ -1,61 +1,74 @@
 # menu.py
-from operaciones import sumar, restar, multiplicar, dividir
+from operaciones import sumar, restar, multiplicar, dividir  # Importar la función dividir
 
 def mostrar_menu():
     print("Seleccione una opción:")
-    print("1- Sumar")
-    print("2- Restar")
-    print("3- Multiplicar")
-    print("4- Dividir")
-    print("5- Salir")
-    
-    # Pedir al usuario que elija una opción
-    opcion = input("Ingrese una opción (1-5): ")
-    
-    # Validar que la opción esté en el rango esperado
-    if opcion not in ['1', '2', '3', '4', '5']:
-        print("Opción inválida. Por favor, ingrese un número entre 1 y 5.")
-        return None, None
-    
-    # Pedir al usuario un número
-    numero1 = float(input("Ingrese el primer número: "))
-    numero2 = float(input("Ingrese el segundo número: "))
-    
-    return opcion, numero1, numero2
+    print("1 - Sumar")
+    print("2 - Restar")
+    print("3 - Multiplicar")
+    print("4 - Dividir")
+    print("5 - Salir")
 
-def ejecutar_opcion(opcion, numero1, numero2):
-    if opcion == '1':
-        try:
-            resultado = sumar(numero1, numero2)
-            print(f"Resultado de sumar: {resultado}")
-        except ValueError as e:
-            print(e)
-    elif opcion == '2':
-        try:
-            resultado = restar(numero1, numero2)
-            print(f"Resultado de restar: {resultado}")
-        except ValueError as e:
-            print(e)
-    elif opcion == '3':
-        try:
-            resultado = multiplicar(numero1, numero2)
-            print(f"Resultado de multiplicar: {resultado}")
-        except ValueError as e:
-            print(e)
-    elif opcion == '4':
-        try:
-            resultado = dividir(numero1, numero2)
-            print(f"Resultado de dividir: {resultado}")
-        except ValueError as e:
-            print(e)
-    elif opcion == '5':
-        print("Saliendo...")
+    opcion = input("Ingrese el número de la opción elegida: ")
 
-if __name__ == "__main__":
-    while True:
-        opcion, numero1, numero2 = mostrar_menu()
-        if opcion is None:
-            continue
-        ejecutar_opcion(opcion, numero1, numero2)
-        if opcion == '5':
-            break
+    try:
+        opcion = int(opcion)  # Convertir la opción a un número entero
+    except ValueError:
+        print("Por favor, ingrese una opción válida (1-5).")
+        return
+
+    if opcion == 1:
+        # Sumar
+        try:
+            num1 = float(input("Ingrese el primer valor: "))
+            num2 = float(input("Ingrese el segundo valor: "))
+            if isinstance(num1, (int, float)) and isinstance(num2, (int, float)):
+                print("Resultado:", sumar(num1, num2))
+            else:
+                print("Error: Ambos valores deben ser números (int o float).")
+        except ValueError:
+            print("Error: Los valores deben ser números.")
+
+    elif opcion == 2:
+        # Restar
+        try:
+            num1 = float(input("Ingrese el primer valor: "))
+            num2 = float(input("Ingrese el segundo valor: "))
+            if isinstance(num1, (int, float)) and isinstance(num2, (int, float)):
+                print("Resultado:", restar(num1, num2))
+            else:
+                print("Error: Ambos valores deben ser números (int o float).")
+        except ValueError:
+            print("Error: Los valores deben ser números.")
+
+    elif opcion == 3:
+        # Multiplicar
+        try:
+            num1 = float(input("Ingrese el primer valor: "))
+            num2 = float(input("Ingrese el segundo valor: "))
+            if isinstance(num1, (int, float)) and isinstance(num2, (int, float)):
+                print("Resultado:", multiplicar(num1, num2))
+            else:
+                print("Error: Ambos valores deben ser números (int o float).")
+        except ValueError:
+            print("Error: Los valores deben ser números.")
+
+    elif opcion == 4:
+        # Dividir
+        try:
+            num1 = float(input("Ingrese el primer valor: "))
+            num2 = float(input("Ingrese el segundo valor: "))
+            if isinstance(num1, (int, float)) and isinstance(num2, (int, float)):
+                if num2 == 0:
+                    print("Error: No se puede dividir entre cero.")
+                else:
+                    print("Resultado:", dividir(num1, num2))
+            else:
+                print("Error: Ambos valores deben ser números (int o float).")
+        except ValueError:
+            print("Error: Los valores deben ser números.")
+
+    elif opcion == 5:
+        print("Saliendo del programa...")
+    else:
+        print("Opción no válida. Intente nuevamente.")
