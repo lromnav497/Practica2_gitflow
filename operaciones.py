@@ -41,3 +41,15 @@ def dividir(a, b):
         resultado = -resultado
 
     return resultado
+
+
+def factorial_iterativo(n):
+    if not isinstance(n, int):  # Comprobar que el valor es un entero
+        raise ValueError("El valor debe ser un número entero.")
+    if n < 0:
+        raise ValueError("El número no puede ser negativo.")
+    
+    resultado = 1
+    for i in range(1, n + 1):  # Calcular el factorial de forma iterativa
+        resultado *= i
+    return resultado
