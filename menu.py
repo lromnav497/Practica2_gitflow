@@ -8,6 +8,9 @@ def mostrar_menu():
     print("3 - Multiplicar")
     print("4 - Dividir")
     print("5 - Salir")
+    print("6- Calcular el factorial (iterativo)")
+    print("7- Calcular el factorial (recursivo)")  # Asegúrate de que esta opción sea 7
+    print("8- Calcular el fibonacci de un número (iterativo)")
 
     opcion = input("Ingrese el número de la opción elegida: ")
 
@@ -16,6 +19,13 @@ def mostrar_menu():
     except ValueError:
         print("Por favor, ingrese una opción válida (1-5).")
         return
+
+    # Lógica para manejar las opciones
+    if opcion == "7":  # Cambiar el número de la opción
+        numero = int(input("Introduzca un número para calcular el Factorial Recursivo: "))
+        resultado = factorial_recursivo(numero)
+        print(f"El factorial recursivo de {numero} es: {resultado}")
+    # Aquí seguirían las demás opciones de cálculo...
 
     if opcion == 1:
         # Sumar
