@@ -1,15 +1,22 @@
-# operaciones.py
+def factorial_recursivo(n):
+    if not isinstance(n, int) or n < 0:
+        raise ValueError("El valor debe ser un entero no negativo")
+    if n == 0:
+        return 1
+    else:
+        return n * factorial_recursivo(n - 1)
+
 def sumar(a, b):
     if isinstance(a, (int, float)) and isinstance(b, (int, float)):
         return a + b
     else:
-        print("Ambos parámetros deben ser int o float")
+        raise ValueError("Ambos parámetros deben ser int o float")
 
 def restar(a, b):
     if isinstance(a, (int, float)) and isinstance(b, (int, float)):
         return a - b
     else:
-        print("Ambos parámetros deben ser int o float")
+        raise ValueError("Ambos parámetros deben ser int o float")
 
 def multiplicar(a, b):
     if isinstance(a, (int, float)) and isinstance(b, (int, float)):
@@ -18,9 +25,8 @@ def multiplicar(a, b):
             resultado += a
         return resultado
     else:
-        print("Ambos parámetros deben ser int o float")
+        raise ValueError("Ambos parámetros deben ser int o float")
 
-# Función para dividir dos números sin usar el operador "/"
 def dividir(a, b):
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         raise ValueError("Ambos parámetros deben ser de tipo int o float")
@@ -31,13 +37,32 @@ def dividir(a, b):
     resto = abs(a)
     divisor = abs(b)
 
-    # Restamos el divisor del dividendo hasta que el dividendo sea menor que el divisor
     while resto >= divisor:
         resto -= divisor
         resultado += 1
 
-    # Si el divisor o el dividendo son negativos, el resultado debe ser negativo
-    if (a < 0) != (b < 0):  # Si uno de los números es negativo
+    if (a < 0) != (b < 0):
         resultado = -resultado
 
     return resultado
+
+def factorial_iterativo(n):
+    if not isinstance(n, int):
+        raise ValueError("El valor debe ser un número entero.")
+    if n < 0:
+        raise ValueError("El número no puede ser negativo.")
+    
+    resultado = 1
+    for i in range(1, n + 1):
+        resultado *= i
+    return resultado
+
+def fibonacci(n):
+    if not isinstance(n, int):
+        raise ValueError("El valor debe ser un entero.")
+    if n < 0:
+        raise ValueError("El valor debe ser un entero no negativo.")
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
