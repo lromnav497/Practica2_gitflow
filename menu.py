@@ -8,6 +8,7 @@ def mostrar_menu():
     print("3 - Multiplicar")
     print("4 - Dividir")
     print("5 - Salir")
+    print("6- Calcular el factorial de un número")
 
     opcion = input("Ingrese el número de la opción elegida: ")
 
@@ -72,3 +73,16 @@ def mostrar_menu():
         print("Saliendo del programa...")
     else:
         print("Opción no válida. Intente nuevamente.")
+
+    if opcion == 6:
+        numero = int(input("Ingrese un número para calcular su factorial: "))
+        try:
+            resultado = factorial_iterativo(numero)
+            print(f"El factorial de {numero} es: {resultado}")
+        except ValueError as e:
+            print(f"Error: {e}")
+    else:
+        # Aquí iría el código para las otras opciones del menú (1-5)
+        pass
+    
+    return opcion, numero
